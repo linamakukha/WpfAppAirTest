@@ -21,9 +21,8 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        DataContext = new MainViewModel();
+        DataContext = new ShellViewModel();
         UpdateThemeGlyph();
-        Loaded += (_, _) => NewTaskBox.Focus();
     }
 
     protected override void OnSourceInitialized(EventArgs e)
