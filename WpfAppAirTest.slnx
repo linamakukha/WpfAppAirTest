@@ -1,3 +1,5 @@
 <Solution>
   <Project Path="WpfAppAirTest/WpfAppAirTest.csproj" />
+  <Project Path="../WpfAppToBeAdded/WpfAppToBeAdded/WpfAppToBeAdded.csproj" />
+  <Project Path="WpfAppAirTest.Tests/WpfAppAirTest.Tests.csproj" />
 </Solution>
