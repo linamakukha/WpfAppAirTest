@@ -13,8 +13,8 @@ public sealed class ShellViewModel : ObservableObject
     public ShellViewModel()
     {
         _currentPage = Planner;
-        ShowPlannerCommand = new RelayCommand(_ => CurrentPage = Planner);
-        ShowMoodCommand = new RelayCommand(_ => CurrentPage = Mood);
+        ShowPlannerCommand = new RelayCommand(_ => ShowPlanner());
+        ShowMoodCommand = new RelayCommand(_ => ShowMood());
     }
 
     public MainViewModel Planner { get; } = new();
@@ -30,4 +30,14 @@ public sealed class ShellViewModel : ObservableObject
     public ICommand ShowPlannerCommand { get; }
 
     public ICommand ShowMoodCommand { get; }
+
+    private void ShowPlanner()
+    {
+        CurrentPage = Planner;
+    }
+
+    private void ShowMood()
+    {
+        CurrentPage = Mood;
+    }
 }
