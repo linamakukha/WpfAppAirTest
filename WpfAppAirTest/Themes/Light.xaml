@@ -11,7 +11,6 @@
         <GradientStop Color="#DB2777" Offset="1" />
     </LinearGradientBrush>
 
-    <SolidColorBrush x:Key="AccentSolidBrush" Color="#7C3AED" />
     <SolidColorBrush x:Key="AccentSoftBrush" Color="#C4B5FD" />
 
     <SolidColorBrush x:Key="SurfaceBrush" Color="#FFFFFF" />
@@ -27,7 +26,6 @@
     <SolidColorBrush x:Key="DoneBadgeForegroundBrush" Color="#15803D" />
     <SolidColorBrush x:Key="DangerBrush" Color="#E11D48" />
     <SolidColorBrush x:Key="ChromeHoverBrush" Color="#14000000" />
-    <SolidColorBrush x:Key="ScrollThumbBrush" Color="#33000000" />
 
     <DropShadowEffect x:Key="CardShadow" x:Shared="False" Color="#5B21B6"
                       BlurRadius="18" ShadowDepth="3" Direction="270" Opacity="0.08" />
