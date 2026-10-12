@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:models="clr-namespace:WpfAppAirTest.Models"
              xmlns:vm="clr-namespace:WpfAppAirTest.ViewModels"
              mc:Ignorable="d"
@@ -50,25 +51,6 @@
         </DataTemplate>
     </UserControl.Resources>
 
-    <UserControl.RenderTransform>
-        <TranslateTransform />
-    </UserControl.RenderTransform>
-    <UserControl.Triggers>
-        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
-            <BeginStoryboard>
-                <Storyboard>
-                    <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.25" />
-                    <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
-                                     From="24" To="0" Duration="0:0:0.3">
-                        <DoubleAnimation.EasingFunction>
-                            <CubicEase EasingMode="EaseOut" />
-                        </DoubleAnimation.EasingFunction>
-                    </DoubleAnimation>
-                </Storyboard>
-            </BeginStoryboard>
-        </EventTrigger>
-    </UserControl.Triggers>
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -108,7 +90,7 @@
                         </Grid.ColumnDefinitions>
 
                         <TextBox Margin="4,0,10,0" Style="{StaticResource PlannerTextBox}"
-                                 Tag="e.g. a little nostalgic"
+                                 mah:TextBoxHelper.Watermark="e.g. a little nostalgic"
                                  Text="{Binding CustomMood, UpdateSourceTrigger=PropertyChanged}">
                             <TextBox.InputBindings>
                                 <KeyBinding Key="Enter" Command="{Binding SaveCommand}" />

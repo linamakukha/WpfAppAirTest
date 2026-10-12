@@ -1,3 +1,4 @@
+using WpfAppAirTest.Models;
 using WpfAppAirTest.ViewModels;
 
 namespace WpfAppAirTest.Tests.ViewModels;
@@ -12,6 +13,12 @@ public class MainViewModelTests
             await Task.Delay(25);
 
         Assert.True(condition(), "Condition was not met within the timeout.");
+    }
+
+    private static async Task MarkDoneAsync(MainViewModel vm, TodoItem item)
+    {
+        item.IsDone = true;
+        await WaitUntilAsync(() => vm.Done.Contains(item));
     }
 
     [Fact]
@@ -124,8 +131,7 @@ public class MainViewModelTests
     {
         var vm = new MainViewModel();
         var item = vm.Pending[0];
-        item.IsDone = true;
-        await WaitUntilAsync(() => vm.Done.Contains(item));
+        await MarkDoneAsync(vm, item);
 
         vm.RemoveCommand.Execute(item);
 
@@ -155,8 +161,7 @@ public class MainViewModelTests
         var vm = new MainViewModel();
         var item = vm.Pending[0];
 
-        item.IsDone = true;
-        await WaitUntilAsync(() => vm.Done.Contains(item));
+        await MarkDoneAsync(vm, item);
 
         Assert.DoesNotContain(item, vm.Pending);
         Assert.Equal(1, vm.DoneCount);
@@ -169,8 +174,7 @@ public class MainViewModelTests
         var vm = new MainViewModel();
         var item = vm.Pending[0];
 
-        item.IsDone = true;
-        await WaitUntilAsync(() => vm.Done.Contains(item));
+        await MarkDoneAsync(vm, item);
 
         Assert.Equal(1.0 / 3, vm.Progress, 5);
         Assert.Equal("33%", vm.ProgressPercentText);
@@ -197,8 +201,7 @@ public class MainViewModelTests
     {
         var vm = new MainViewModel();
         var item = vm.Pending[0];
-        item.IsDone = true;
-        await WaitUntilAsync(() => vm.Done.Contains(item));
+        await MarkDoneAsync(vm, item);
 
         item.IsDone = false;
         await WaitUntilAsync(() => vm.Pending.Contains(item));
